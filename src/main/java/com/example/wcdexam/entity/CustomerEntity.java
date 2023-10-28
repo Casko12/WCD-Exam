@@ -13,7 +13,6 @@ public class CustomerEntity implements Serializable {
     private String name;
     private Integer age;
     private String address;
-    //    @Temporal(TemporalType.DATE)
     private Date birthday;
 
     public CustomerEntity(Integer id, String name, Integer age, String address, Date birthday) {
