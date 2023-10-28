@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/employee/index">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/all-employee">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/employee/add">Add Employee</a>
+                        <a class="nav-link" href="/add-employee">Add Employee</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" action="/employee/search">
