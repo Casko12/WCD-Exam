@@ -69,4 +69,6 @@ public class CustomerEntity implements Serializable {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+    public CustomerEntity() {
+    }
 }
