@@ -20,19 +20,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/all-employee">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/employee-list">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/add-employee">Add Employee</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search" action="/employee/search">
-                    <input class="form-control me-2" type="search" name="fullname" placeholder="Search FullName" aria-label="Search FullName">
-                    <input class="form-control me-2" type="search" name="address" placeholder="Search Address" aria-label="Search Address">
-                    <input class="form-control me-2" type="search" name="position" placeholder="Search Position" aria-label="Search Position">
-                    <input class="form-control me-2" type="search" name="department" placeholder="Search Department" aria-label="Search Department">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -83,22 +76,6 @@
             </tr>
         </c:forEach>
     </table>
-
-
-
-    <%--    <nav aria-label="Page navigation example">--%>
-    <%--        <ul class="pagination justify-content-center">--%>
-    <%--            <c:if test="${currentPage > 1}"><li class="page-item"></c:if>--%>
-    <%--            <c:if test="${currentPage <= 1}"><li class="page-item disabled"></c:if>--%>
-    <%--            <a class="page-link" href="/student/index?page=${currentPage - 1}">Previous</a>--%>
-    <%--        </li>--%>
-
-    <%--            <c:if test="${currentPage >= totalPages}"><li class="page-item disabled"></c:if>--%>
-    <%--            <c:if test="${currentPage < totalPages}"><li class="page-item"></c:if>--%>
-    <%--            <a class="page-link" href="/student/index?page=${currentPage + 1}">Next</a>--%>
-    <%--        </li>--%>
-    <%--        </ul>--%>
-    <%--    </nav>--%>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
