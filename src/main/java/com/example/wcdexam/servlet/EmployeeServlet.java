@@ -20,24 +20,19 @@ public class EmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String birthdayStr = req.getParameter("birthday");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date birthday = dateFormat.parse(req.getParameter("birthday"));
-        String address = req.getParameter("address");
-        String position = req.getParameter("position");
-        String department = req.getParameter("department");
-        EmployeeEntity employee = new EmployeeEntity();
-        employee.setName(name);
-        employee.setBirthday(birthday);
-        employee.setAddress(address);
-        employee.setPosition(position);
-        employee.setDepartment(department);
-        try{
-            employeeDAO.createEmployee(employee);
-        }catch(Exception e){
-            e.printStackTrace();
+        try {
+            EmployeeEntity st = new EmployeeEntity(
+                    req.getParameter("fullName"),
+                    dateFormat.parse(req.getParameter("birthday")),
+                    req.getParameter("address"),
+                    req.getParameter("position"),
+                    req.getParameter("department")
+            );
+            employeeDAO.createEmployee(st);
+            resp.sendRedirect("employee-servlet");
+        }catch (Exception ex){
+            System.out.printf(ex.getMessage());
         }
-        resp.sendRedirect("list.jsp");
     }
 }
