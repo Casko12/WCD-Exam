@@ -11,4 +11,4 @@ public class PersistenceUtil {
         }
         return  entityManagerFactory;
     }
-}jpa
+}

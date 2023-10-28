@@ -1,7 +1,7 @@
 package com.example.wcdexam.dao.impl;
 
-import com.example.wcdexam.dao.CustomerDAO;
-import com.example.wcdexam.entity.CustomerEntity;
+import com.example.wcdexam.dao.EmployeeDAO;
+import com.example.wcdexam.entity.EmployeeEntity;
 import com.example.wcdexam.util.PersistenceUtil;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -9,19 +9,19 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDAOImpl implements CustomerDAO {
+public class EmployeeDAOImpl implements EmployeeDAO {
     EntityManager entityManager;
     EntityTransaction transaction;
-    public CustomerDAOImpl(){
+    public EmployeeDAOImpl(){
         entityManager = PersistenceUtil.createEntityManagerFactory().createEntityManager();
         transaction = entityManager.getTransaction();
     }
 
     @Override
-    public void createCustomer(CustomerEntity customer) {
+    public void createEmployee(EmployeeEntity employee) {
         try{
             transaction.begin();
-            entityManager.persist(customer);
+            entityManager.persist(employee);
             transaction.commit();
         }catch(Exception ex){
             System.out.printf(ex.getMessage());
@@ -30,23 +30,23 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public List<CustomerEntity> getAll() {
-        List<CustomerEntity> customers = new ArrayList<>();
+    public List<EmployeeEntity> getAll() {
+        List<EmployeeEntity> employees = new ArrayList<>();
         try{
-            Query query  = entityManager.createQuery("select s from CustomerEntity s");
+            Query query  = entityManager.createQuery("select e from EmployeeEntity e");
             return query.getResultList();
         }catch (Exception ex){
             System.out.printf(ex.getMessage());
         }
-        return customers;
+        return employees;
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public void deleteEmployee(int id) {
         try {
             transaction.begin();
-            CustomerEntity customer = entityManager.find(CustomerEntity.class, id);
-            entityManager.remove(customer);
+            EmployeeEntity employee = entityManager.find(EmployeeEntity.class, id);
+            entityManager.remove(employee);
             transaction.commit();
         } catch (Exception ex) {
             System.out.printf(ex.getMessage());
@@ -55,15 +55,16 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public void updateCustomer( CustomerEntity customer) {
+    public void updateEmployee( EmployeeEntity employee) {
         try {
             transaction.begin();
-            CustomerEntity c = entityManager.find(CustomerEntity.class, customer.getId());
-            c.setName(customer.getName());
-            c.setAge(customer.getAge());
-            c.setAddress(customer.getAddress());
-            c.setBirthday(customer.getBirthday());
-            entityManager.merge(c);
+            EmployeeEntity e = entityManager.find(EmployeeEntity.class, employee.getId());
+            e.setName(employee.getName());
+            e.setBirthday(employee.getBirthday());
+            e.setAddress(employee.getAddress());
+            e.setPosition(employee.getPosition());
+            e.setDepartment(employee.getDepartment());
+            entityManager.merge(e);
             transaction.commit();
         } catch (Exception ex) {
             System.out.printf(ex.getMessage());
@@ -72,15 +73,15 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public CustomerEntity getById(int id) {
-        CustomerEntity customer = new CustomerEntity();
+    public EmployeeEntity getById(int id) {
+        EmployeeEntity employee = new EmployeeEntity();
         try{
-            customer = entityManager.find(CustomerEntity.class, id);
-            return customer;
+            employee = entityManager.find(EmployeeEntity.class, id);
+            return employee;
         }catch (Exception ex) {
             System.out.printf(ex.getMessage());
 
         }
-        return customer;
+        return employee;
     }
 }
