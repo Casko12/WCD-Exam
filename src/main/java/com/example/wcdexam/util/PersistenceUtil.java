@@ -7,8 +7,8 @@ public class PersistenceUtil {
 
     public static synchronized EntityManagerFactory createEntityManagerFactory() {
         if (entityManagerFactory == null) {
-            entityManagerFactory = Persistence.createEntityManagerFactory("jpaDemo");
+            entityManagerFactory = Persistence.createEntityManagerFactory("jpaConnector");
         }
         return  entityManagerFactory;
     }
-}
+}jpa
